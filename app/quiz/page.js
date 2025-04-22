@@ -22,50 +22,50 @@ const quizQuestions = [
     id: 4,
     fact: "Plasma allows transaction fees to be paid in popular assets like USDT or BTC through an automated swap mechanism.",
   },
-    {
-      id: 5,
-      fact: "Plasma offers zero-fee USDT transfers.",
-    },
-    {
-      id: 6,
-      fact: "Plasma is a general-purpose blockchain.",
-    },
-    {
-      id: 7,
-      fact: "Plasma is a Layer 2 scaling solution for Ethereum.",
-    },
-    {
-      id: 8,
-      fact: "Plasma's execution layer is built on Reth.",
-    },
-    {
-      id: 9,
-      fact: "Plasma does not support any form of transaction confidentiality, exposing all transaction details publicly.​",
-    },
-    {
-      id: 10,
-      fact: "Plasma has no any investment in the project.",
-    },
-    {
-      id: 11,
-      fact: "Plasma's development roadmap does not prioritize collaborations with external financial entities.",
-    },
-    {
-      id: 12,
-      fact: "Plasma focuses primarily on NFT trading.",
-    },
-    {
-      id: 13,
-      fact: "Plasma lacks a consensus protocol and relies entirely on external networks for transaction validation.",
-    },
-    {
-      id: 14,
-      fact: "SC contributor is a role for 50 lvl on Discord Server.",
-    },
-    {
-      id: 15,
-      fact: "scene has pre-trillions diagnosis.​",
-    },
+  {
+    id: 5,
+    fact: "Plasma offers zero-fee USDT transfers.",
+  },
+  {
+    id: 6,
+    fact: "Plasma is a general-purpose blockchain.",
+  },
+  {
+    id: 7,
+    fact: "Plasma is a Layer 2 scaling solution for Ethereum.",
+  },
+  {
+    id: 8,
+    fact: "Plasma's execution layer is built on Reth.",
+  },
+  {
+    id: 9,
+    fact: "Plasma does not support any form of transaction confidentiality, exposing all transaction details publicly.​",
+  },
+  {
+    id: 10,
+    fact: "Plasma has no any investment in the project.",
+  },
+  {
+    id: 11,
+    fact: "Plasma's development roadmap does not prioritize collaborations with external financial entities.",
+  },
+  {
+    id: 12,
+    fact: "Plasma focuses primarily on NFT trading.",
+  },
+  {
+    id: 13,
+    fact: "Plasma lacks a consensus protocol and relies entirely on external networks for transaction validation.",
+  },
+  {
+    id: 14,
+    fact: "SC contributor is a role for 50 lvl on Discord Server.",
+  },
+  {
+    id: 15,
+    fact: "scene has pre-trillions diagnosis.​",
+  },
 ];
 
 export default function QuizPage() {
@@ -99,24 +99,24 @@ export default function QuizPage() {
       const timer = setTimeout(() => {
         setShowConfetti(false);
       }, 5000);
-      
+
       return () => clearTimeout(timer);
     }
   }, [results]);
 
   const handleAnswer = (answer) => {
     if (buttonDisabled) return;
-    
+
     setButtonDisabled(true);
     const isLastQuestion = currentQuestion === quizQuestions.length - 1;
     const updatedAnswers = {
       ...answers,
       [quizQuestions[currentQuestion].id]: answer
     };
-    
+
     setAnswers(updatedAnswers);
     setDirection(answer ? 'right' : 'left');
-    
+
     if (isLastQuestion) {
       setTimeout(() => {
         setIsQuizFinished(true);
@@ -137,7 +137,6 @@ export default function QuizPage() {
       setDirection(null);
       setButtonDisabled(false);
     } else {
-      // This branch should never execute now since we handle the last question in handleAnswer
       setIsQuizFinished(true);
       submitAnswers();
       setButtonDisabled(false);
@@ -148,7 +147,7 @@ export default function QuizPage() {
     try {
       setLoading(true);
       await new Promise(resolve => setTimeout(resolve, 500));
-      
+
       // Make sure all questions have an answer
       const completeAnswers = { ...finalAnswers };
       quizQuestions.forEach(q => {
@@ -234,25 +233,23 @@ export default function QuizPage() {
 
   if (results) {
     const percentage = getPercentage(results);
-    
     return (
       <div className="flex flex-col items-center justify-center min-h-screen p-8 text-center bg-plasma-dark">
-        <div className="bg-white dark:bg-gray-800 p-8 rounded-xl shadow-lg max-w-md w-full">
-          <h1 className="text-3xl font-bold mb-6">Your Result</h1>
-          
+        <div className="bg-white dark:bg-gray-800 p-8 rounded-xl shadow-lg max-w-md w-full ">
+          <h1 className="text-3xl font-bold mb-6 text-plasma">Your Result</h1>
           <div className="flex justify-center items-center mb-8">
             <div className="relative w-40 h-40">
               <div className="w-full h-full rounded-full bg-gray-200 dark:bg-gray-700"></div>
-              <div 
+              <div
                 className="absolute top-0 left-0 w-full h-full rounded-full"
                 style={{
                   background: `conic-gradient(${getScoreColor(percentage)} ${percentage}%, transparent ${percentage}%)`,
                   transition: 'all 1s ease-out'
                 }}
               ></div>
-              <div className="absolute top-0 left-0 w-full h-full rounded-full bg-white dark:bg-gray-800" style={{ 
-                width: '80%', 
-                height: '80%', 
+              <div className="absolute top-0 left-0 w-full h-full rounded-full bg-white dark:bg-gray-800" style={{
+                width: '80%',
+                height: '80%',
                 margin: '10%',
                 borderRadius: '50%'
               }}></div>
@@ -262,14 +259,12 @@ export default function QuizPage() {
               </div>
             </div>
           </div>
-          
           <p className="text-xl mb-8">{getMessage(percentage)}</p>
-          
           <div className="flex justify-center">
             <Link href="/" className="mr-4 px-6 py-3 bg-gray-200 dark:bg-gray-700 rounded-lg hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors">
               Home
             </Link>
-            <button 
+            <button
               onClick={() => {
                 setResults(null);
                 setIsQuizFinished(false);
@@ -284,7 +279,7 @@ export default function QuizPage() {
             </button>
           </div>
         </div>
-        
+
         {showConfetti && <Confetti />}
       </div>
     );
@@ -321,15 +316,15 @@ export default function QuizPage() {
   };
 
   return (
-      <div className="flex flex-col items-center justify-center min-h-screen p-8 text-center relative overflow-x-hidden bg-plasma-dark">
+    <div className="flex flex-col items-center justify-center min-h-screen p-8 text-center relative overflow-x-hidden bg-plasma-dark">
       <div className="w-full max-w-2xl">
         <div className="mb-6 flex justify-between items-center text-white">
-          <span className="text-lg font-medium">Question<span className="text-plasma"> {currentQuestion + 1}</span> of <span className="text-plasma">{quizQuestions.length}</span></span>
-          <span className="text-lg font-medium px-4 py-2 text-plasma rounded-lg">
+          <span className="text-lg font-medium select-none">Question<span className="text-plasma"> {currentQuestion + 1}</span> of <span className="text-plasma">{quizQuestions.length}</span></span>
+          <span className="text-lg font-medium px-4 py-2 text-plasma rounded-lg select-none">
             {timeLeft} sec
           </span>
         </div>
-        
+
         <AnimatePresence mode="wait" custom={direction}>
           <motion.div
             key={currentQuestion}
@@ -338,37 +333,37 @@ export default function QuizPage() {
             initial="enter"
             animate="animate"
             exit="exit"
-            transition={{ 
+            transition={{
               type: "spring",
               stiffness: 300,
               damping: 30,
-              duration: 0.3 
+              duration: 0.3
             }}
-            className="bg-white dark:bg-gray-800 p-8 rounded-xl shadow-md mb-8 border-2 border-plasma-light"
+            className="bg-white dark:bg-gray-800 p-8 rounded-xl shadow-md mb-8 border-2 border-plasma-light select-none"
           >
-            <h2 className="text-2xl font-bold mb-6 text-plasma-dark">{currentQuestionData.fact}</h2>
-            
+            <h2 className="text-2xl font-bold mb-6 text-plasma-dark select-none">{currentQuestionData.fact}</h2>
+
             <div className="grid grid-cols-2 gap-4">
-              <button 
+              <button
                 onClick={() => handleAnswer(true)}
                 disabled={buttonDisabled}
-                className={`py-4 px-6 bg-green-500 text-white rounded-lg transition-colors text-xl ${buttonDisabled ? 'opacity-70 cursor-not-allowed' : 'hover:bg-green-600'}`}
+                className={`py-4 px-6 bg-green-500 text-white rounded-lg transition-colors text-xl select-none ${buttonDisabled ? 'opacity-70 cursor-not-allowed' : 'hover:bg-green-600'}`}
               >
                 True
               </button>
-              <button 
+              <button
                 onClick={() => handleAnswer(false)}
                 disabled={buttonDisabled}
-                className={`py-4 px-6 bg-red-500 text-white rounded-lg transition-colors text-xl ${buttonDisabled ? 'opacity-70 cursor-not-allowed' : 'hover:bg-red-600'}`}
+                className={`py-4 px-6 bg-red-500 text-white rounded-lg transition-colors text-xl select-none ${buttonDisabled ? 'opacity-70 cursor-not-allowed' : 'hover:bg-red-600'}`}
               >
                 False
               </button>
             </div>
           </motion.div>
         </AnimatePresence>
-        
+
         <div className="w-full bg-gray-700 h-3 rounded-full overflow-hidden">
-          <div 
+          <div
             className="bg-plasma-light h-3 rounded-full transition-all"
             style={{ width: `${((currentQuestion) / (quizQuestions.length - 1)) * 100}%` }}
           ></div>
@@ -383,7 +378,7 @@ function Confetti() {
   return (
     <div className="fixed inset-0 pointer-events-none">
       {Array.from({ length: 100 }).map((_, i) => (
-        <div 
+        <div
           key={i}
           className="absolute w-2 h-2 rounded-full"
           style={{
