@@ -234,7 +234,7 @@ export default function QuizPage() {
   if (results) {
     const percentage = getPercentage(results);
     const tweetText = encodeURIComponent(`🚀 JUST CRUSHED THE STIBELKOIN QUIZ WITH A MIND-BLOWING ${results.score} / ${results.total}! 🔥 
-Think you can do better? Try it now: 
+Think you can do better? Try it now: https://plasmaquiz.vercel.app/
 @PlasmaFDN #Trillions #STIBELKOIN`);
     const tweetUrl = `https://twitter.com/intent/tweet?text=${tweetText}`;
     

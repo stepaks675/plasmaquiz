@@ -14,13 +14,18 @@ export default function Home() {
           <li className="mb-2">You have 7 seconds for each question</li>
           <li className="mb-2">Choose "True" or "False" for each fact</li>
           <li className="mb-2">At the end of the quiz, you'll see your result</li>
-          <li className="mb-2 "><Link href="https://plasma.to" target="_blank" rel="noopener noreferrer" className="animate-pulse text-plasma" >Trillions</Link> 👈</li>
+          <li className="mb-2 z-100 "><Link href="https://plasma.to" target="_blank" rel="noopener noreferrer" className="animate-pulse text-plasma" >Trillions</Link> 👈</li>
         </ul>
       </div>
       <Link href="/quiz" className="px-6 py-3 bg-plasma-light z-100 text-plasma-dark rounded-lg  hover:scale-101  text-lg transition-all font-medium">
         Start Quiz
       </Link>
       <BouncingLogo className="z-0"/>
+      <div className="absolute bottom-4 text-sm text-plasma">
+        <Link href="https://x.com/stepaks576" target="_blank" rel="noopener noreferrer" className="hover:text-plasma transition-colors">
+          Made by Stepaks
+        </Link>
+      </div>
     </div>
     
   );
