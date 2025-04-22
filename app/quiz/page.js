@@ -71,7 +71,7 @@ const quizQuestions = [
 export default function QuizPage() {
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [answers, setAnswers] = useState({});
-  const [timeLeft, setTimeLeft] = useState(7);
+  const [timeLeft, setTimeLeft] = useState(10);
   const [isQuizFinished, setIsQuizFinished] = useState(false);
   const [direction, setDirection] = useState(null);
   const [results, setResults] = useState(null);
@@ -133,7 +133,7 @@ export default function QuizPage() {
   const handleNextQuestion = () => {
     if (currentQuestion < quizQuestions.length - 1) {
       setCurrentQuestion(prev => prev + 1);
-      setTimeLeft(7);
+      setTimeLeft(10);
       setDirection(null);
       setButtonDisabled(false);
     } else {
